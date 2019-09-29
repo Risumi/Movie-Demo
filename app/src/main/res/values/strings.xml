@@ -112,16 +112,18 @@
     <string name="text_appearance_caption_label">Caption</string>
     <string name="text_appearance_overline_label">Overline</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string-array name="display">
         <item>Grid View</item>
         <item>List View</item>
     </string-array>
-
     <string-array name="filter">
         <item>Rating</item>
         <item>Popularity</item>
         <item>Favorite</item>
     </string-array>
+    
     <string-array name="sort">
         <item>Ascending</item>
         <item>Descending</item>

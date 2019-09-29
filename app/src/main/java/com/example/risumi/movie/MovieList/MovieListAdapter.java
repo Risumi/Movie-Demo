@@ -1,26 +1,23 @@
-package com.example.risumi.movie;
+package com.example.risumi.movie.MovieList;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.risumi.movie.Model.Movie;
+import com.example.risumi.movie.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.google.android.material.card.MaterialCardView;
-
 import androidx.recyclerview.widget.RecyclerView;
-import info.movito.themoviedbapi.model.MovieDb;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
 
-    List<MovieDb> movieArrayList;
-    MovieDb current;
+    List<Movie> movieArrayList;
+    Movie current;
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
@@ -28,7 +25,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
 
-    public MovieAdapter(List<MovieDb> movieArrayList) {
+    public MovieListAdapter(List<Movie> movieArrayList) {
         this.movieArrayList = movieArrayList;
     }
 
@@ -44,16 +41,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         current = movieArrayList.get(position);
         Glide.with(holder.itemView.getContext())
                 .load("https://image.tmdb.org/t/p/w500"+current.getPosterPath())
-                .apply(new RequestOptions().override(400, 500))
+                .apply(new RequestOptions().override(600, 800))
                 .placeholder(R.drawable.noimg)
                 .dontAnimate()
                 .into(holder.movieImage);
-//        holder.PokemonIndex.setText(current.getIndexPokedex());
-//        holder.PokemonName.setText(current.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickCallback.onItemClicked(movieArrayList.get(position));
+                onItemClickCallback.onItemClicked(position);
             }
         });
     }
@@ -76,6 +71,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public interface OnItemClickCallback{
-        void onItemClicked(MovieDb movie);
+        void onItemClicked(int position);
     }
 }

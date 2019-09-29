@@ -1,10 +1,10 @@
-package com.example.risumi.movie;
+package com.example.risumi.movie.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import info.movito.themoviedbapi.TmdbApi;
-import info.movito.themoviedbapi.TmdbAuthentication;
 
 import android.os.Bundle;
+
+import com.example.risumi.movie.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
